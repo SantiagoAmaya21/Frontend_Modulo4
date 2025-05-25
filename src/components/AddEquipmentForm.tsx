@@ -30,41 +30,43 @@ export default function AddEquipmentForm() {
   };
 
   return (
-    <div className="p-4 border rounded space-y-3">
-      <h2 className="text-xl mb-2">Agregar Nuevo Equipo</h2>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white border border-gray-300 rounded shadow-sm space-y-4">
+      <h2 className="text-xl font-bold text-[#990000] mb-2">Agregar Nuevo Equipo</h2>
 
       <input
         type="text"
         placeholder="Nombre del equipo"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="w-full p-2 border rounded"
+        className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-gray-600 placeholder-gray-600"
+        required
       />
 
       <textarea
         placeholder="Descripción"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        className="w-full p-2 border rounded"
+        className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-gray-600 placeholder-gray-600"
+        required
       />
 
       <input
         type="text"
-        placeholder="Observaciones"
+        placeholder="Observaciones (opcional)"
         value={observations}
         onChange={(e) => setObservations(e.target.value)}
-        className="w-full p-2 border rounded"
+        className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-gray-600 placeholder-gray-600"
       />
+
+      {success && <p className="text-green-600 text-sm">¡Equipo registrado exitosamente!</p>}
+      {error && <p className="text-red-600 text-sm">{error}</p>}
 
       <button
         onClick={handleSubmit}
-        className="px-4 py-2 bg-blue-600 text-white rounded"
+        className="w-full py-2 rounded-md font-semibold transition bg-[#990000] text-white hover:bg-red-600 hover:text-black"
       >
         Registrar Equipo
       </button>
-
-      {success && <p className="text-green-600">¡Equipo registrado exitosamente!</p>}
-      {error && <p className="text-red-600">{error}</p>}
     </div>
   );
 }
