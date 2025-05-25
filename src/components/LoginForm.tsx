@@ -43,7 +43,7 @@ export default function LoginForm() {
       {/* Logo */}
       <div className="mb-4">
         <Image
-          src="/resourses/LOGO.png"
+          src="/resources/LOGO.png"
           alt="Logo Institucional"
           width={120}
           height={120}
@@ -62,9 +62,10 @@ export default function LoginForm() {
             value={correo}
             onChange={(e) => setCorreo(e.target.value)}
             placeholder="Ingrese su correo"
-            className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none"
+            className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-[#990000] placeholder-gray-600"
             required
           />
+
         </div>
 
         <div>
@@ -74,9 +75,10 @@ export default function LoginForm() {
             value={contraseña}
             onChange={(e) => setContraseña(e.target.value)}
             placeholder="Ingrese su contraseña"
-            className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none"
+            className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-[#990000] placeholder-gray-600"
             required
           />
+
         </div>
 
         {error && <p className="text-sm text-red-500">{error}</p>}
