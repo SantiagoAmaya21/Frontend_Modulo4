@@ -9,8 +9,7 @@ import withAuth from '@/lib/withAuth'
 
 function generalServicesPage() {
   return (
-    <main className="max-w-4xl mx-auto p-4 space-y-6">
-      <h1 className="text-3xl font-bold mb-4">Gestión de Préstamos Deportivos</h1>
+    <main className="min-h-screen bg-gray-100 p-8 pb-20 grid grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <ReturnForm />
       <EquipmentStatusForm />
       <Notification />

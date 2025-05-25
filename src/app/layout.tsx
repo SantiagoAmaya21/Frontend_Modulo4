@@ -35,7 +35,7 @@ export default function RootLayout({
               width={64}
               height={64}
             />
-            <h1 className="ml-4 text-3xl font-bold text-gray-900">ECIbienestar</h1>
+            <h1 className="ml-4 text-3xl font-bold text-gray-900">ECIbienestar - Gestión de Préstamos Deportivos</h1>
           </div>
         </header>
 
