@@ -17,6 +17,7 @@ function generalServicesPage() {
       <Notification />
       <UserLoansList />
       <EquipmentById />
+     </div>
     </main>
   );
 }
