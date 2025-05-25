@@ -54,7 +54,7 @@ export default function LoginForm() {
       <h2 className="text-xl font-bold text-[#990000] mb-2">Acceso Institucional</h2>
       <p className="text-sm text-gray-600 mb-6">Ingrese sus credenciales para acceder al sistema</p>
 
-      <form onSubmit={handleSubmit} className="space-y-4 text-left">
+      <form onSubmit={handleSubmit} className="max-w-sm mx-auto mt-10 p-6 bg-gray-100 border border-gray-300 rounded shadow-sm space-y-4">
         <div>
           <label className="text-sm font-medium text-[#990000]">Correo</label>
           <input
@@ -62,7 +62,7 @@ export default function LoginForm() {
             value={correo}
             onChange={(e) => setCorreo(e.target.value)}
             placeholder="Ingrese su correo"
-            className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-[#990000] placeholder-gray-600"
+            className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-gray-600 placeholder-gray-600"
             required
           />
 
@@ -75,7 +75,7 @@ export default function LoginForm() {
             value={contraseña}
             onChange={(e) => setContraseña(e.target.value)}
             placeholder="Ingrese su contraseña"
-            className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-[#990000] placeholder-gray-600"
+            className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-gray-600 placeholder-gray-600"
             required
           />
 
