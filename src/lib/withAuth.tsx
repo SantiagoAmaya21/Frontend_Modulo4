@@ -13,7 +13,7 @@ type Props = {
 
 type DecodedToken = {
   id: string;
-  rol: UserRole;
+  role: UserRole;
   exp: number;
 };
 
@@ -37,7 +37,7 @@ export default function withAuth<P extends object>(
         const decoded: DecodedToken = jwtDecode(token);
 
 
-        if (!allowedRoles.includes(decoded.rol)) {
+        if (!allowedRoles.includes(decoded.role)) {
           router.push('/no-autorizado');
           return;
         }
