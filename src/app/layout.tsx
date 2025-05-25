@@ -24,25 +24,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900}>
-        {/* Header global - ancho completo */}
-        <header className="bg-white shadow-md w-full">
-          <div className="max-w-7xl mx-auto flex items-center px-6 py-6">
-            <Image
-              src="/resources/LOGO.png"
-              alt="Logo ECIbienestar"
-              width={64}
-              height={64}
-            />
-            <h1 className="ml-4 text-3xl font-bold text-gray-900">ECIbienestar - Gestión de Préstamos Deportivos</h1>
-          </div>
-        </header>
+    <div className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900`}>
+      {/* Header global - ancho completo */}
+      <header className="bg-white shadow-md w-full">
+        <div className="max-w-7xl mx-auto flex items-center px-6 py-6">
+          <Image
+            src="/resources/LOGO.png"
+            alt="Logo ECIbienestar"
+            width={64}
+            height={64}
+          />
+          <h1 className="ml-4 text-3xl font-bold text-gray-900">
+            ECIbienestar - Gestión de Préstamos Deportivos
+          </h1>
+        </div>
+      </header>
 
-
-        {/* Contenido principal */}
-        {children}
-      </body>
-    </html>
+      {/* Contenido principal */}
+      {children}
+    </div>
   );
 }
