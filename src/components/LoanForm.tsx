@@ -34,13 +34,15 @@ export default function LoanForm() {
       const loanDurationHours =
         (new Date(form.returnDueDateTime).getTime() - new Date(form.loanDateTime).getTime()) /
         (1000 * 60 * 60);
-
+      const userIdToken = localStorage.getItem('token') || '';
+      const [, payloadBase64] = userIdToken.split('.');
+      const decodedPayload = JSON.parse(atob(payloadBase64));
+      const id = decodedPayload.id;
       const loanData = {
         ...form,
-        userId: localStorage.getItem('userId') || '',
+        userId: id,
         loanDurationHours,
       };
-
       await createLoan(loanData);
       setMessage('Préstamo creado exitosamente');
     } catch (err: any) {
