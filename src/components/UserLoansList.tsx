@@ -51,7 +51,6 @@ export default function UserLoansList() {
             <li key={e.id} className="border p-2 rounded">
               <strong>ID:</strong> {e.id} <br />
               <strong>Equipo:</strong> {e.equipmentId} <br />
-              <strong>Estado:</strong> {e.status} <br />
               <strong>Devuelto:</strong> {e.returned ? 'Sí' : 'No'}
             </li>
           ))

@@ -60,9 +60,9 @@ export default function LoanForm() {
         required
         className="block w-full p-2 border rounded mb-2"
       >
-        <option value="">Seleccione un equipo</option>
+        <option value="" className="text-black">Seleccione un equipo</option>
         {equipmentList.map((eq: any) => (
-          <option key={eq.id} value={eq.id}>
+          <option key={eq.id} value={eq.id} className="text-black">
             {eq.name} (ID: {eq.id})
           </option>
         ))}

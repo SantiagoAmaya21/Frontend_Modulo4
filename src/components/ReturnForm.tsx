@@ -16,10 +16,24 @@ export default function ReturnForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      console.log('Datos enviados a returnLoan:', {
+        loanId,
+        returnStatus,
+        confirmedReturnBy,
+        observations
+      });
       await returnLoan({ loanId, returnStatus, confirmedReturnBy, observations });
       setMessage('Devolución registrada exitosamente');
     } catch (err: any) {
-      setMessage(err.response?.data || 'Error en la devolución');
+      const errorData = err.response?.data;
+
+        if (typeof errorData === 'string') {
+          setMessage(errorData);
+        } else if (errorData?.error) {
+          setMessage(errorData.error);
+        } else {
+          setMessage('Error en la devolución');
+        }
     }
   };
 

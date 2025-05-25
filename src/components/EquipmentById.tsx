@@ -51,12 +51,12 @@ export default function EquipmentById() {
             equipment.available ? 'bg-green-100 border-green-400' : 'bg-red-100 border-red-400'
           }`}
         >
-          <p><strong>ID:</strong> {equipment.id}</p>
-          <p><strong>Nombre:</strong> {equipment.name}</p>
-          <p><strong>Descripción:</strong> {equipment.description}</p>
-          <p><strong>Estado:</strong> {equipment.status}</p>
-          <p><strong>Observaciones:</strong> {equipment.observations}</p>
-          <p className="font-bold">
+          <p className="text-red-800"><strong>ID:</strong> {equipment.id}</p>
+          <p className="text-red-800"><strong>Nombre:</strong> {equipment.name}</p>
+          <p className="text-red-800"><strong>Descripción:</strong> {equipment.description}</p>
+          <p className="text-red-800"><strong>Estado:</strong> {equipment.status}</p>
+          <p className="text-red-800"><strong>Observaciones:</strong> {equipment.observations}</p>
+          <p className="font-bold text-red-800">
             <strong>Disponible:</strong>{' '}
             <span className={equipment.available ? 'text-green-700' : 'text-red-700'}>
               {equipment.available ? 'Sí' : 'No'}
@@ -64,6 +64,7 @@ export default function EquipmentById() {
           </p>
         </div>
       )}
+
     </div>
   );
 }

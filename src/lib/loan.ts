@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/loans';
+const API_URL = 'https://shootingstars-hyaxc5g5dnd2f7bz.brazilsouth-01.azurewebsites.net//api/loans';
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem('token');
