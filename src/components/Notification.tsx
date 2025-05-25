@@ -1,6 +1,6 @@
 'use client';
 type Props = {
-  message: string;
+  message?: string;
 };
 
 export default function Notification({ message }: Props) {
