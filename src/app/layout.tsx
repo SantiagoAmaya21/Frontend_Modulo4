@@ -25,16 +25,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* Header global */}
-        <header className="bg-white shadow-md flex items-center px-6 py-3 max-w-7xl mx-auto">
-          <Image
-            src="/resources/LOGO.png"
-            alt="Logo ECIbienestar"
-            width={40}
-            height={40}
-          />
-          <h1 className="ml-4 text-xl font-bold text-gray-900">ECIbienestar</h1>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900`}>
+        {/* Header global - ancho completo */}
+        <header className="bg-white shadow-md w-full">
+          <div className="max-w-7xl mx-auto flex items-center px-6 py-4">
+            <Image
+              src="/resources/LOGO.png"
+              alt="Logo ECIbienestar"
+              width={40}
+              height={40}
+            />
+            <h1 className="ml-4 text-xl font-bold text-gray-900">ECIbienestar</h1>
+          </div>
         </header>
 
         {/* Contenido principal */}
