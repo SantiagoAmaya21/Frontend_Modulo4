@@ -11,7 +11,7 @@ const getAuthHeaders = () => {
 
 export async function getUserNotifications(userId: string) {
   try {
-    const res = await axios.get(`${API_URL}/${userId}`, {
+    const res = await axios.get(`${API_URL}/notifications/${userId}`, {
       headers: getAuthHeaders(),
     });
     return res.data;
