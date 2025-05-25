@@ -45,7 +45,7 @@ export default function withAuth<P extends object>(
         setAuthorized(true);
       } catch (err) {
         console.error('Token inválido', err);
-        router.push('/login');
+        router.push('/');
       }
     }, []);
 
