@@ -39,7 +39,7 @@ export default function LoginForm() {
   const isDisabled = !correo || !contraseña;
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-8 w-full max-w-md text-center">
+    <div className="max-w-sm mx-auto mt-10 p-6 bg-gray-100 border border-gray-300 rounded shadow-sm space-y-4">
       {/* Logo */}
       <div className="mb-4">
         <Image
@@ -54,7 +54,7 @@ export default function LoginForm() {
       <h2 className="text-xl font-bold text-[#990000] mb-2">Acceso Institucional</h2>
       <p className="text-sm text-gray-600 mb-6">Ingrese sus credenciales para acceder al sistema</p>
 
-      <form onSubmit={handleSubmit} className="max-w-sm mx-auto mt-10 p-6 bg-gray-100 border border-gray-300 rounded shadow-sm space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 text-left">
         <div>
           <label className="text-sm font-medium text-[#990000]">Correo</label>
           <input
