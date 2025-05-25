@@ -3,7 +3,6 @@
 import ReturnForm from '@/components/ReturnForm';
 import EquipmentStatusForm from '@/components/EquipmentStatusForm';
 import Notification from '@/components/Notification';
-import UserLoansList from '@/components/UserLoansList';
 import EquipmentById from '@/components/EquipmentById';
 import withAuth from '@/lib/withAuth'
 
@@ -15,7 +14,6 @@ function generalServicesPage() {
       <ReturnForm />
       <EquipmentStatusForm />
       <Notification />
-      <UserLoansList />
       <EquipmentById />
      </div>
     </main>

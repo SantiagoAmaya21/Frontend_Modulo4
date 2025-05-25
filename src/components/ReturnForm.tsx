@@ -10,7 +10,6 @@ export default function ReturnForm() {
   const [observations, setObservations] = useState('');
   const [message, setMessage] = useState('');
 
-  // Obtenemos el id del funcionario que confirma la devolución
   const confirmedReturnBy = localStorage.getItem('userId') || '';
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,53 +26,67 @@ export default function ReturnForm() {
     } catch (err: any) {
       const errorData = err.response?.data;
 
-        if (typeof errorData === 'string') {
-          setMessage(errorData);
-        } else if (errorData?.error) {
-          setMessage(errorData.error);
-        } else {
-          setMessage('Error en la devolución');
-        }
+      if (typeof errorData === 'string') {
+        setMessage(errorData);
+      } else if (errorData?.error) {
+        setMessage(errorData.error);
+      } else {
+        setMessage('Error en la devolución');
+      }
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded space-y-3">
-      <h2 className="text-xl mb-2">Registrar Devolución</h2>
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-md mx-auto mt-10 p-6 bg-white border border-gray-300 rounded shadow-sm space-y-4"
+    >
+      <h2 className="text-xl font-bold text-[#990000] mb-2">Registrar Devolución</h2>
+      <p className="text-sm text-gray-600 mb-4">Complete la información del préstamo devuelto</p>
 
-      <input
-        placeholder="ID Préstamo"
-        value={loanId}
-        onChange={e => setLoanId(e.target.value)}
-        required
-        className="block w-full p-2 border rounded"
-      />
+      <div>
+        <label className="text-sm font-medium text-[#990000]">ID del Préstamo</label>
+        <input
+          placeholder="Ingrese el ID del préstamo"
+          value={loanId}
+          onChange={e => setLoanId(e.target.value)}
+          required
+          className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-gray-600 placeholder-gray-600"
+        />
+      </div>
 
-      <label htmlFor="returnStatus">Estado del equipo devuelto:</label>
-      <select
-        id="returnStatus"
-        value={returnStatus}
-        onChange={e => setReturnStatus(e.target.value)}
-        required
-        className="block w-full p-2 border rounded"
-      >
-        <option value="" className="text-black">Selecciona un estado</option>
-        <option value="GOODSTATUS" className="text-black">GOODSTATUS</option>
-        <option value="DAMAGED" className="text-black">DAMAGED</option>
-      </select>
+      <div>
+        <label htmlFor="returnStatus" className="text-sm font-medium text-[#990000]">
+          Estado del equipo devuelto
+        </label>
+        <select
+          id="returnStatus"
+          value={returnStatus}
+          onChange={e => setReturnStatus(e.target.value)}
+          required
+          className="w-full mt-1 p-2 border border-gray-300 rounded-md text-gray-600"
+        >
+          <option value="">Selecciona un estado</option>
+          <option value="GOODSTATUS">GOODSTATUS</option>
+          <option value="DAMAGED">DAMAGED</option>
+        </select>
+      </div>
 
-      <textarea
-        placeholder="Observaciones"
-        value={observations}
-        onChange={e => setObservations(e.target.value)}
-        className="block w-full p-2 border rounded"
-      />
+      <div>
+        <label className="text-sm font-medium text-[#990000]">Observaciones</label>
+        <textarea
+          placeholder="Ingrese observaciones si las hay"
+          value={observations}
+          onChange={e => setObservations(e.target.value)}
+          className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-gray-600 placeholder-gray-600"
+        />
+      </div>
 
       <button
         type="submit"
-        className="px-4 py-2 bg-blue-500 text-white rounded"
+        className="w-full py-2 rounded-md font-semibold transition bg-[#990000] text-white hover:bg-red-600 hover:text-black"
       >
-        Registrar
+        Registrar Devolución
       </button>
 
       <Notification message={message} />
