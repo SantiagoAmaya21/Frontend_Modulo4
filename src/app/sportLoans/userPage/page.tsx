@@ -4,6 +4,7 @@ import LoanForm from '@/components/LoanForm';
 import EquipmentList from '@/components/EquipmentList';
 import Notification from '@/components/Notification';
 import UserLoansList from '@/components/UserLoansList';
+import NotificationSystem from '@/components/NotificationSystem'
 import withAuth from '@/lib/withAuth';
 
 function UserPage() {
@@ -14,6 +15,7 @@ function UserPage() {
       <LoanForm />
       <Notification />
       <UserLoansList />
+      <NotificationSystem />
     </main>
   );
 }

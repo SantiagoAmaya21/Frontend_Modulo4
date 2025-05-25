@@ -9,6 +9,17 @@ const getAuthHeaders = () => {
   };
 };
 
+export async function getUserNotifications(userId: string) {
+  try {
+    const res = await axios.get(`${API_URL}/${userId}`, {
+      headers: getAuthHeaders(),
+    });
+    return res.data;
+  } catch (error: any) {
+    throw new Error(error.response?.data || 'Error al obtener notificaciones');
+  }
+
+
 export const createLoan = async (loanRequest: any) => {
   const res = await axios.post(`${API_URL}/create`, loanRequest, {
     headers: getAuthHeaders(),
