@@ -37,7 +37,7 @@ export default function withAuth<P extends object>(
         const decoded: DecodedToken = jwtDecode(token);
 
 
-        if (!allowedRoles.includes(decoded.role)) {
+        if (!allowedRoles.includes(decoded.rol)) {
           router.push('/no-autorizado');
           return;
         }
