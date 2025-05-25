@@ -4,7 +4,7 @@ import LoanForm from '@/components/LoanForm';
 import EquipmentList from '@/components/EquipmentList';
 import Notification from '@/components/Notification';
 import UserLoansList from '@/components/UserLoansList';
-import NotificationSystem from '@/components/NotificationSystem'
+import NotificationSystem from '@/components/NotificationSystem';
 import withAuth from '@/lib/withAuth';
 
 function UserPage() {
@@ -20,6 +20,6 @@ function UserPage() {
       </div>
     </main>
   );
-
+}
 
 export default withAuth(UserPage, { allowedRoles: ['STUDENT', 'TEACHER'] });
