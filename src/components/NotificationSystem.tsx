@@ -28,19 +28,19 @@ export default function NotificationSystem() {
   }, []);
 
   return (
-    <div className="p-4 border rounded bg-yellow-50">
-      <h2 className="text-lg font-semibold mb-2">Notificaciones</h2>
+    <div className="p-4 border rounded">
+      <h2 className="text-lg mb-2">Notificaciones</h2>
 
       {error && <p className="text-red-500">{error}</p>}
 
       {notifications.length > 0 ? (
-        <ul className="list-disc pl-5 space-y-1">
+        <ul>
           {notifications.map((msg, index) => (
             <li key={index}>{msg}</li>
           ))}
         </ul>
       ) : (
-        <p className="text-gray-600">No hay notificaciones en este momento.</p>
+        <p>No hay notificaciones en este momento.</p>
       )}
     </div>
   );
