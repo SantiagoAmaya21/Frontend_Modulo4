@@ -15,7 +15,6 @@ export default function LoanForm() {
   const [equipmentList, setEquipmentList] = useState([]);
 
   useEffect(() => {
-    // Obtener la lista de equipos disponibles al cargar el componente
     const fetchEquipment = async () => {
       try {
         const equipment = await getAvailableEquipment();
@@ -50,51 +49,70 @@ export default function LoanForm() {
     }
   };
 
+  const isDisabled = !form.equipmentId || !form.loanDateTime || !form.returnDueDateTime;
+
   return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded">
-      <h2 className="text-xl mb-2">Registrar Préstamo</h2>
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-md mx-auto mt-10 p-6 bg-white border border-gray-300 rounded shadow-sm space-y-4"
+    >
+      <h2 className="text-xl font-bold text-[#990000] mb-2">Registrar Préstamo</h2>
 
-      <label htmlFor="equipment">Equipo:</label>
-      <select
-        id="equipment"
-        value={form.equipmentId}
-        onChange={(e) => setForm({ ...form, equipmentId: e.target.value })}
-        required
-        className="block w-full p-2 border rounded mb-2"
+      <div>
+        <label htmlFor="equipment" className="text-sm font-medium text-[#990000]">Equipo</label>
+        <select
+          id="equipment"
+          value={form.equipmentId}
+          onChange={(e) => setForm({ ...form, equipmentId: e.target.value })}
+          required
+          className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-gray-600"
+        >
+          <option value="">Seleccione un equipo</option>
+          {equipmentList.map((eq: any) => (
+            <option key={eq.id} value={eq.id}>
+              {eq.name} (ID: {eq.id})
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="loanDateTime" className="text-sm font-medium text-[#990000]">Fecha y hora de préstamo</label>
+        <input
+          type="datetime-local"
+          id="loanDateTime"
+          value={form.loanDateTime}
+          onChange={(e) => setForm({ ...form, loanDateTime: e.target.value })}
+          required
+          className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-gray-600"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="returnDueDateTime" className="text-sm font-medium text-[#990000]">Fecha y hora de devolución</label>
+        <input
+          type="datetime-local"
+          id="returnDueDateTime"
+          value={form.returnDueDateTime}
+          onChange={(e) => setForm({ ...form, returnDueDateTime: e.target.value })}
+          required
+          className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-gray-600"
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={isDisabled}
+        className={`w-full py-2 rounded-md font-semibold transition ${
+          isDisabled
+            ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
+            : 'bg-[#990000] text-white hover:bg-red-600 hover:text-black'
+        }`}
       >
-        <option value="" className="text-black">Seleccione un equipo</option>
-        {equipmentList.map((eq: any) => (
-          <option key={eq.id} value={eq.id} className="text-black">
-            {eq.name} (ID: {eq.id})
-          </option>
-        ))}
-      </select>
-
-      <label htmlFor="loanDateTime">Fecha y hora de préstamo:</label>
-      <input
-        type="datetime-local"
-        id="loanDateTime"
-        value={form.loanDateTime}
-        onChange={(e) => setForm({ ...form, loanDateTime: e.target.value })}
-        required
-        className="block w-full p-2 border rounded mb-2"
-      />
-
-      <label htmlFor="returnDueDateTime">Fecha y hora de devolución:</label>
-      <input
-        type="datetime-local"
-        id="returnDueDateTime"
-        value={form.returnDueDateTime}
-        onChange={(e) => setForm({ ...form, returnDueDateTime: e.target.value })}
-        required
-        className="block w-full p-2 border rounded mb-2"
-      />
-
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-        Enviar
+        Registrar Préstamo
       </button>
 
-      <Notification message={message} />
+      {message && <Notification message={message} />}
     </form>
   );
 }

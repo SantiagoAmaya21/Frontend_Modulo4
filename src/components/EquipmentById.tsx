@@ -25,38 +25,39 @@ export default function EquipmentById() {
   };
 
   return (
-    <div className="p-4 border rounded space-y-3">
-      <h2 className="text-xl mb-2">Equipo por ID</h2>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white border border-gray-300 rounded shadow-sm space-y-4">
+      <h2 className="text-xl font-bold text-[#990000]">Buscar Equipo por ID</h2>
+      <p className="text-sm text-gray-600">Ingrese el ID del equipo que desea consultar</p>
 
       <input
         type="text"
-        placeholder="ID del Equipo"
+        placeholder="ID del equipo"
         value={equipmentId}
         onChange={(e) => setEquipmentId(e.target.value)}
-        className="block w-full p-2 border rounded"
+        className="w-full mt-1 p-2 border border-gray-300 rounded-md outline-none text-gray-600 placeholder-gray-600"
       />
 
       <button
         onClick={handleSearch}
-        className="px-4 py-2 bg-blue-500 text-white rounded"
+        className="w-full py-2 rounded-md font-semibold bg-[#990000] text-white hover:bg-red-600 hover:text-black transition"
       >
         Buscar
       </button>
 
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="text-sm text-red-500">{error}</p>}
 
       {equipment && (
         <div
-          className={`mt-4 border p-4 rounded shadow-md transition-all duration-500 ${
+          className={`mt-4 p-4 border rounded-md shadow-sm space-y-2 ${
             equipment.available ? 'bg-green-100 border-green-400' : 'bg-red-100 border-red-400'
           }`}
         >
-          <p className="text-red-800"><strong>ID:</strong> {equipment.id}</p>
-          <p className="text-red-800"><strong>Nombre:</strong> {equipment.name}</p>
-          <p className="text-red-800"><strong>Descripción:</strong> {equipment.description}</p>
-          <p className="text-red-800"><strong>Estado:</strong> {equipment.status}</p>
-          <p className="text-red-800"><strong>Observaciones:</strong> {equipment.observations}</p>
-          <p className="font-bold text-red-800">
+          <p className="text-gray-700"><strong>ID:</strong> {equipment.id}</p>
+          <p className="text-gray-700"><strong>Nombre:</strong> {equipment.name}</p>
+          <p className="text-gray-700"><strong>Descripción:</strong> {equipment.description}</p>
+          <p className="text-gray-700"><strong>Estado:</strong> {equipment.status}</p>
+          <p className="text-gray-700"><strong>Observaciones:</strong> {equipment.observations}</p>
+          <p className="font-bold text-gray-700">
             <strong>Disponible:</strong>{' '}
             <span className={equipment.available ? 'text-green-700' : 'text-red-700'}>
               {equipment.available ? 'Sí' : 'No'}
@@ -64,7 +65,6 @@ export default function EquipmentById() {
           </p>
         </div>
       )}
-
     </div>
   );
 }

@@ -12,43 +12,52 @@ export default function EquipmentStatusForm() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      if (newStatus === 'DAMAGED' || newStatus === 'MAINTENANCE'){
-          await disableEquipment(equipmentId);
+      if (newStatus === 'DAMAGED' || newStatus === 'MAINTENANCE') {
+        await disableEquipment(equipmentId);
       } else {
-          await enableEquipment(equipmentId);
+        await enableEquipment(equipmentId);
       }
       await updateEquipmentStatus({ equipmentId, newStatus });
-      setMessage('Estado actualizado');
+      setMessage('Estado actualizado correctamente');
     } catch (err: any) {
       setMessage(err.response?.data || 'Error al actualizar estado');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded">
-      <h2 className="text-xl mb-2">Actualizar Estado de Equipo</h2>
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-md mx-auto mt-10 p-6 bg-white border border-gray-300 rounded shadow-sm space-y-4"
+    >
+      <h2 className="text-xl font-bold text-[#990000]">Actualizar Estado de Equipo</h2>
+
       <input
-            type= "text"
-            placeholder="ID Equipo"
-            value={equipmentId}
-            onChange={e => setEquipmentId(e.target.value)}
-            className="block w-full p-2 border rounded"
+        type="text"
+        placeholder="ID del equipo"
+        value={equipmentId}
+        onChange={(e) => setEquipmentId(e.target.value)}
+        className="w-full p-2 border border-gray-300 rounded"
       />
+
       <select
         value={newStatus}
-        onChange={e => setNewStatus(e.target.value)}
-        className="border border-gray-300 rounded p-2 w-full"
+        onChange={(e) => setNewStatus(e.target.value)}
+        className="w-full p-2 border border-gray-300 rounded text-black"
       >
-        <option value="" className="text-black">Selecciona un estado</option>
-        <option value="GOODSTATUS" className="text-black">GOODSTATUS</option>
-          <option value="DAMAGED" className="text-black">DAMAGED</option>
-          <option value="MAINTENANCE" className="text-black">MAINTENANCE</option>
+        <option value="">Selecciona un estado</option>
+        <option value="GOODSTATUS">GOODSTATUS</option>
+        <option value="DAMAGED">DAMAGED</option>
+        <option value="MAINTENANCE">MAINTENANCE</option>
       </select>
 
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+      <button
+        type="submit"
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition"
+      >
         Actualizar
       </button>
-      <Notification message={message} />
+
+      {message && <Notification message={message} />}
     </form>
   );
 }
