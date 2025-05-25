@@ -39,7 +39,7 @@ export default function LoginForm() {
   const isDisabled = !correo || !contraseña;
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-gray-100 border border-gray-300 rounded shadow-sm space-y-4">
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white border border-gray-300 rounded shadow-sm space-y-4">
       {/* Logo */}
       <div className="mb-4">
         <Image
