@@ -16,7 +16,7 @@ import withAuth from '@/lib/withAuth';
 
 function AdminPage() {
   const [showReport, setShowReport] = useState(false);
-  const [showAvailable, setShowAvailable] = useState(true); // true: disponibles, false: mal estado
+  const [showAvailable, setShowAvailable] = useState(true);
 
   return (
     <main className="min-h-screen bg-gray-100 flex flex-col items-center p-6 sm:p-10">
@@ -38,8 +38,8 @@ function AdminPage() {
           </div>
         )}
 
-
-          {/* Resto del panel */}
+        {/* Grid principal */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <AddEquipmentForm />
           <ReturnForm />
           <EquipmentStatusForm />
@@ -47,38 +47,37 @@ function AdminPage() {
           <AllActiveLoans />
           <Notification />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Selector de tipo de equipos */}
-                    <div className="bg-white border border-gray-300 rounded shadow-sm p-4">
-                      <h3 className="text-lg font-semibold text-[#990000] mb-3">Filtrar Equipos</h3>
-                      <div className="flex gap-3">
-                        <button
-                          onClick={() => setShowAvailable(true)}
-                          className={`px-4 py-2 rounded font-semibold border w-full ${
-                            showAvailable
-                              ? 'bg-[#990000] text-white'
-                              : 'bg-white text-[#990000] border-[#990000]'
-                          }`}
-                        >
-                          Disponibles
-                        </button>
-                        <button
-                          onClick={() => setShowAvailable(false)}
-                          className={`px-4 py-2 rounded font-semibold border w-full ${
-                            !showAvailable
-                              ? 'bg-[#990000] text-white'
-                              : 'bg-white text-[#990000] border-[#990000]'
-                          }`}
-                        >
-                          Mal Estado
-                        </button>
-                      </div>
-                    </div>
+          {/* Selector de tipo de lista */}
+          <div className="bg-white border border-gray-300 rounded shadow-sm p-4">
+            <h3 className="text-lg font-semibold text-[#990000] mb-3">Filtrar Equipos</h3>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowAvailable(true)}
+                className={`px-4 py-2 rounded font-semibold border w-full ${
+                  showAvailable
+                    ? 'bg-[#990000] text-white'
+                    : 'bg-white text-[#990000] border-[#990000]'
+                }`}
+              >
+                Disponibles
+              </button>
+              <button
+                onClick={() => setShowAvailable(false)}
+                className={`px-4 py-2 rounded font-semibold border w-full ${
+                  !showAvailable
+                    ? 'bg-[#990000] text-white'
+                    : 'bg-white text-[#990000] border-[#990000]'
+                }`}
+              >
+                Mal Estado
+              </button>
+            </div>
+          </div>
 
-                    {/* Lista de equipos según filtro */}
-                    <div className="bg-white border border-gray-300 rounded shadow-sm p-4">
-                      {showAvailable ? <EquipmentList /> : <EquipmentBadList />}
-                    </div>
+          {/* Lista según selección */}
+          <div className="bg-white border border-gray-300 rounded shadow-sm p-4">
+            {showAvailable ? <EquipmentList /> : <EquipmentBadList />}
+          </div>
         </div>
       </div>
     </main>
