@@ -1,5 +1,7 @@
 'use client';
 
+import React, { useState } from 'react';
+
 import AddEquipmentForm from '@/components/AddEquipmentForm';
 import ReturnForm from '@/components/ReturnForm';
 import EquipmentStatusForm from '@/components/EquipmentStatusForm';
