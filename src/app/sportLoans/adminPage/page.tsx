@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import AddEquipmentForm from '@/components/AddEquipmentForm';
 import ReturnForm from '@/components/ReturnForm';
 import EquipmentStatusForm from '@/components/EquipmentStatusForm';
-import EquipmentById from '@/components/EquipmentById';
 import Notification from '@/components/Notification';
 import EquipmentList from '@/components/EquipmentList';
 import AllActiveLoans from '@/components/AllActiveLoans';
@@ -43,12 +42,13 @@ function AdminPage() {
           <AddEquipmentForm />
           <ReturnForm />
           <EquipmentStatusForm />
+          <AllActiveLoans />
+          <Notification />
 
-
-          {/* Selector de tipo de lista */}
-          <div className="bg-white border border-gray-300 rounded shadow-sm p-4">
+          {/* Selector y lista combinados */}
+          <div className="bg-white border border-gray-300 rounded shadow-sm p-4 md:col-span-2">
             <h3 className="text-lg font-semibold text-[#990000] mb-3">Filtrar Equipos</h3>
-            <div className="flex gap-3">
+            <div className="flex gap-3 mb-4">
               <button
                 onClick={() => setShowAvailable(true)}
                 className={`px-4 py-2 rounded font-semibold border w-full ${
@@ -70,15 +70,10 @@ function AdminPage() {
                 Mal Estado
               </button>
             </div>
-          </div>
 
-          {/* Lista según selección */}
-          <div className="bg-white border border-gray-300 rounded shadow-sm p-4">
+            {/* Lista según selección */}
             {showAvailable ? <EquipmentList /> : <EquipmentBadList />}
           </div>
-
-          <AllActiveLoans />
-          <Notification />
         </div>
       </div>
     </main>
