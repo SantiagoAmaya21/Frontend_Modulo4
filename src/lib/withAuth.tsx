@@ -29,7 +29,7 @@ export default function withAuth<P extends object>(
       const token = localStorage.getItem('token');
 
       if (!token) {
-        router.push('/login');
+        router.push('/');
         return;
       }
 
