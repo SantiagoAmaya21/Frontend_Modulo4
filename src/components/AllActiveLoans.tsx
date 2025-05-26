@@ -13,8 +13,8 @@ type Loan = {
 };
 
 type EnrichedLoan = Loan & {
-  equipmentName: string;
-  userCorreo: string;
+  name: string;
+  correo: string;
 };
 
 export default function AllActiveLoans() {
@@ -30,23 +30,23 @@ export default function AllActiveLoans() {
 
         const enriched: EnrichedLoan[] = await Promise.all(
           loanList.map(async (loan) => {
-            let equipmentName = loan.equipmentId;
-            let userCorreo = loan.userId;
+            let name = loan.equipmentId;
+            let correo = loan.userId;
 
             try {
               const equipment = await getEquipmentById(loan.equipmentId);
-              equipmentName = equipment.name;
+              name = equipment.name;
             } catch {
-              // Si falla, se usa el ID como fallback
+
             }
 
             try {
-              userCorreo = await getCorreoById(loan.userId);
+              correo = await getCorreoById(loan.userId);
             } catch {
-              // Si falla, se usa el ID como fallback
+
             }
 
-            return { ...loan, equipmentName, userCorreo };
+            return { ...loan, name, correo };
           })
         );
 
@@ -80,8 +80,8 @@ export default function AllActiveLoans() {
               className="p-4 border border-gray-200 rounded-md shadow-sm bg-gray-50"
             >
               <p className="text-gray-700"><strong>ID préstamo:</strong> {loan.id}</p>
-              <p className="text-gray-700"><strong>Correo usuario:</strong> {loan.userCorreo}</p>
-              <p className="text-gray-700"><strong>Equipo:</strong> {loan.equipmentName}</p>
+              <p className="text-gray-700"><strong>Correo usuario:</strong> {loan.correo}</p>
+              <p className="text-gray-700"><strong>Equipo:</strong> {loan.name}</p>
               <p className="text-gray-700"><strong>Devuelto:</strong> {loan.returned ? 'Sí' : 'No'}</p>
             </li>
           ))}
