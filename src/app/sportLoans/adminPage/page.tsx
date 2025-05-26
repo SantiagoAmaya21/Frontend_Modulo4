@@ -7,14 +7,36 @@ import EquipmentById from '@/components/EquipmentById';
 import Notification from '@/components/Notification';
 import EquipmentList from '@/components/EquipmentList';
 import AllActiveLoans from '@/components/AllActiveLoans';
+import LoansReport from '@/components/LoansReport';
 
 import withAuth from '@/lib/withAuth';
 
 function AdminPage() {
+  const [showReport, setShowReport] = useState(false);
+
   return (
-    <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6 sm:p-10">
-      <div className="w-full max-w-7xl bg-white border border-gray-300 rounded shadow-sm p-6">
+    <main className="min-h-screen bg-gray-100 flex flex-col items-center p-6 sm:p-10">
+      <div className="w-full max-w-7xl bg-white border border-gray-300 rounded shadow-sm p-6 mb-6">
         <h2 className="text-2xl font-bold text-[#990000] text-center mb-6">Panel de Administrador</h2>
+
+
+        <div className="flex justify-center mb-6">
+          <button
+            onClick={() => setShowReport((prev) => !prev)}
+            className="bg-[#990000] text-white font-semibold px-6 py-2 rounded hover:bg-[#b30000] transition"
+          >
+            {showReport ? 'Ocultar Reporte' : 'Generar Reporte'}
+          </button>
+        </div>
+
+
+        {showReport && (
+          <div className="mb-8">
+            <LoansReport />
+          </div>
+        )}
+
+        {/* Resto del panel */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <AddEquipmentForm />
           <ReturnForm />
