@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { getAllLoans } from '@/lib/loans';
+import { getAllLoans } from '@/lib/loan';
 import { getEquipmentById } from '@/lib/equipment';
 
 import {
