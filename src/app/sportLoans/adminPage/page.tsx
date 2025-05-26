@@ -10,17 +10,18 @@ import Notification from '@/components/Notification';
 import EquipmentList from '@/components/EquipmentList';
 import AllActiveLoans from '@/components/AllActiveLoans';
 import LoansReport from '@/components/LoansReport';
+import EquipmentBadList from '@/components/EquipmentBadList';
 
 import withAuth from '@/lib/withAuth';
 
 function AdminPage() {
   const [showReport, setShowReport] = useState(false);
+  const [showAvailable, setShowAvailable] = useState(true); // true = disponibles, false = malos/mantenimiento
 
   return (
     <main className="min-h-screen bg-gray-100 flex flex-col items-center p-6 sm:p-10">
       <div className="w-full max-w-7xl bg-white border border-gray-300 rounded shadow-sm p-6 mb-6">
         <h2 className="text-2xl font-bold text-[#990000] text-center mb-6">Panel de Administrador</h2>
-
 
         <div className="flex justify-center mb-6">
           <button
@@ -31,12 +32,40 @@ function AdminPage() {
           </button>
         </div>
 
-
         {showReport && (
           <div className="mb-8">
             <LoansReport />
           </div>
         )}
+
+        {/* Selector de lista de equipos */}
+        <div className="flex justify-center gap-4 mb-6">
+          <button
+            onClick={() => setShowAvailable(true)}
+            className={`px-4 py-2 rounded font-semibold border ${
+              showAvailable
+                ? 'bg-[#990000] text-white'
+                : 'bg-white text-[#990000] border-[#990000]'
+            }`}
+          >
+            Equipos Disponibles
+          </button>
+          <button
+            onClick={() => setShowAvailable(false)}
+            className={`px-4 py-2 rounded font-semibold border ${
+              !showAvailable
+                ? 'bg-[#990000] text-white'
+                : 'bg-white text-[#990000] border-[#990000]'
+            }`}
+          >
+            Equipos en Mal Estado / Mantenimiento
+          </button>
+        </div>
+
+        {/* Lista de equipos seleccionada */}
+        <div className="mb-8">
+          {showAvailable ? <EquipmentList /> : <EquipmentBadList />}
+        </div>
 
         {/* Resto del panel */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -44,7 +73,6 @@ function AdminPage() {
           <ReturnForm />
           <EquipmentStatusForm />
           <EquipmentById />
-          <EquipmentList />
           <AllActiveLoans />
           <Notification />
         </div>
