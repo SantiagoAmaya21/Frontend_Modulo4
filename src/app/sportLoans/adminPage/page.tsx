@@ -44,8 +44,7 @@ function AdminPage() {
           <ReturnForm />
           <EquipmentStatusForm />
           <EquipmentById />
-          <AllActiveLoans />
-          <Notification />
+
 
           {/* Selector de tipo de lista */}
           <div className="bg-white border border-gray-300 rounded shadow-sm p-4">
@@ -78,6 +77,9 @@ function AdminPage() {
           <div className="bg-white border border-gray-300 rounded shadow-sm p-4">
             {showAvailable ? <EquipmentList /> : <EquipmentBadList />}
           </div>
+
+          <AllActiveLoans />
+          <Notification />
         </div>
       </div>
     </main>
