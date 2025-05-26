@@ -45,7 +45,7 @@ export default function UserLoansList() {
         setLoans(enriched);
         setError('');
       } catch (err: any) {
-        setError(err.response?.data || 'Error al obtener los préstamos');
+        setError(err.response?.data || 'Error al obtener la lista préstamos');
         setLoans([]);
       } finally {
         setLoading(false);
@@ -56,23 +56,26 @@ export default function UserLoansList() {
   }, []);
 
   return (
-    <div className="p-4 border rounded space-y-3">
-      <h2 className="text-xl mb-2">Tus Préstamos</h2>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white border border-gray-300 rounded shadow-sm">
+      <h2 className="text-xl font-bold text-[#990000] mb-4">Tus Préstamos</h2>
 
-      {loading && <p>Cargando...</p>}
+      {loading && <p className="text-gray-600">Cargando...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
-      <ul className="mt-4 space-y-2">
+      <ul className="space-y-3">
         {loans.length > 0 ? (
           loans.map((e) => (
-            <li key={e.id} className="border p-2 rounded">
-              <strong>ID préstamo:</strong> {e.id} <br />
-              <strong>Equipo:</strong> {e.equipmentName} <br />
-              <strong>Devuelto:</strong> {e.returned ? 'Sí' : 'No'}
+            <li
+              key={e.id}
+              className="p-4 border border-gray-200 rounded-md shadow-sm bg-gray-50"
+            >
+              <p className="text-gray-700"><strong>ID préstamo:</strong> {e.id}</p>
+              <p className="text-gray-700"><strong>Equipo:</strong> {e.equipmentName}</p>
+              <p className="text-gray-700"><strong>Devuelto:</strong> {e.returned ? 'Sí' : 'No'}</p>
             </li>
           ))
         ) : (
-          !loading && <p>No hay préstamos para este usuario.</p>
+          !loading && <p className="text-gray-600">No hay préstamos para este usuario.</p>
         )}
       </ul>
     </div>
