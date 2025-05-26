@@ -9,6 +9,18 @@ const getAuthHeaders = () => {
   };
 };
 
+export const getAllLoans = async () => {
+  try {
+    const res = await axios.get(`${API_URL}/loans`, {
+      headers: getAuthHeaders(),
+    });
+    return res.data;
+  } catch (error: any) {
+    throw new Error(error.response?.data || 'Error al obtener los préstamos');
+  }
+};
+
+
 export async function getUserNotifications(userId: string) {
   try {
     const res = await axios.get(`${API_URL}/notifications/${userId}`, {
