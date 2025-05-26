@@ -43,7 +43,6 @@ function AdminPage() {
           <AddEquipmentForm />
           <ReturnForm />
           <EquipmentStatusForm />
-          <EquipmentById />
 
 
           {/* Selector de tipo de lista */}
