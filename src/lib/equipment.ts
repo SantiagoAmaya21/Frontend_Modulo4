@@ -56,3 +56,11 @@ export const enableEquipment = async (id: string) => {
     headers: getAuthHeaders(),
   });
 };
+
+export const getBadAndMaintenanceEquipment = async () => {
+  const res = await axios.get(`${API_URL}/getBadEquipment`, {
+    headers: getAuthHeaders(),
+  });
+  return res.data;
+};
+

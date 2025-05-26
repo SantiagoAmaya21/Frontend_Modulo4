@@ -16,9 +16,22 @@ export async function getUserNotifications(userId: string) {
     });
     return res.data;
   } catch (error: any) {
-    throw new Error(error.response?.data || 'Error al obtener notificaciones');
+        throw new Error(error.response?.data || 'Error al obtener notificaciones');
   }
 }
+
+export const getActiveLoans = async () => {
+  try {
+    const res = await axios.get(`${API_URL}/ActiveLoans`, {
+      headers: getAuthHeaders(),
+    });
+    return res.data;
+  } catch (error: any) {
+    throw new Error(error.response?.data || 'Error al obtener los préstamos');
+  }
+};
+
+
 
 export const createLoan = async (loanRequest: any) => {
   const res = await axios.post(`${API_URL}/create`, loanRequest, {
