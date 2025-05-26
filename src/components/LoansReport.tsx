@@ -115,7 +115,7 @@ export default function LoansReport() {
   // Préstamos por tipo de equipo (usamos cache para buscar tipo)
   const loansByType = filteredLoans.reduce((acc, loan) => {
     const eq = equipmentsCache.get(loan.equipmentId);
-    const type = eq?.type || 'Desconocido';
+    const type = eq?.name || 'Desconocido';
     acc[type] = (acc[type] || 0) + 1;
     return acc;
   }, {} as Record<string, number>);
@@ -139,7 +139,7 @@ export default function LoansReport() {
 
   // Préstamos por estado del equipo
   const loansByStatus = filteredLoans.reduce((acc, loan) => {
-    const status = loan.initialEquipmentStatus || 'Desconocido';
+    const status = loan.initialEquipmentStatus?.toUpperCase?.() || 'Desconocido';
     acc[status] = (acc[status] || 0) + 1;
     return acc;
   }, {} as Record<string, number>);
