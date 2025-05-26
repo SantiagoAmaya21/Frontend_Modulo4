@@ -5,6 +5,9 @@ import ReturnForm from '@/components/ReturnForm';
 import EquipmentStatusForm from '@/components/EquipmentStatusForm';
 import EquipmentById from '@/components/EquipmentById';
 import Notification from '@/components/Notification';
+import EquipmentList from '@/components/EquipmentList';
+import AllActiveLoans from '@/components/AllActiveLoans';
+
 import withAuth from '@/lib/withAuth';
 
 function AdminPage() {
@@ -16,6 +19,8 @@ function AdminPage() {
         <ReturnForm />
         <EquipmentStatusForm />
         <EquipmentById />
+        <EquipmentList />
+        <AllActiveLoans />
         <Notification />
       </div>
     </main>

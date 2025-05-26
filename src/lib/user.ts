@@ -15,14 +15,11 @@ export async function loginUser(correo: string, contraseña: string): Promise<st
   }
 }
 
-export async function getUserCorreoById(userId: string): Promise<string> {
+export async function getCorreoById(id: string): Promise<string> {
   try {
-    const res = await axios.get(`${API_URL}/correo`, {
-      params: { userId }
-    });
-    return res.data;
+    const response = await axios.get(`${API_URL}/correo/${id}`);
+    return response.data;
   } catch (error: any) {
     throw new Error(error.response?.data || 'Error al obtener el correo del usuario');
   }
-}
 

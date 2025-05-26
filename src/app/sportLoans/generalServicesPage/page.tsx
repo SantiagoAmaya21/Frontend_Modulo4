@@ -2,7 +2,7 @@
 
 import EquipmentStatusForm from '@/components/EquipmentStatusForm';
 import Notification from '@/components/Notification';
-import NotificationBadAndMaintenanceEquipment from '@/components/NotificationBadAndMaintenanceEquipment'
+import NotificationBadAndMaintenanceEquipment from '@/components/NotificationBadAndMaintenanceEquipment';
 import withAuth from '@/lib/withAuth'
 
 function generalServicesPage() {
