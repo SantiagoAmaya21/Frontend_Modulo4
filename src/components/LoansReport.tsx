@@ -246,9 +246,6 @@ export default function LoansReport() {
           <Pie data={statusData} options={{ responsive: true, plugins: { legend: { position: 'bottom' } } }} />
         )}
 
-        {activeTab === 'dateRange' && (
-          <Line data={dateRangeData} options={{ responsive: true, plugins: { legend: { display: true } } }} />
-        )}
       </div>
     </div>
   );
