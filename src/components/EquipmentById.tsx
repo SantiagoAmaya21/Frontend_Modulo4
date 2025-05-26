@@ -26,8 +26,8 @@ export default function EquipmentById() {
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white border border-gray-300 rounded shadow-sm space-y-4">
-      <h2 className="text-xl font-bold text-[#990000]">Buscar Equipo por ID</h2>
-      <p className="text-sm text-gray-600">Ingrese el ID del equipo que desea consultar</p>
+      <h2 className="text-xl font-bold text-[#990000] mb-2">Buscar Equipo por ID</h2>
+      <p className="text-sm text-gray-600 mb-4">Ingrese el ID del equipo que desea consultar</p>
 
       <input
         type="text"
@@ -48,7 +48,7 @@ export default function EquipmentById() {
 
       {equipment && (
         <div
-          className={`mt-4 p-4 border rounded-md shadow-sm space-y-2 ${
+          className={`mt-4 p-4 border rounded-md shadow-sm space-y-2 text-sm ${
             equipment.available ? 'bg-green-100 border-green-400' : 'bg-red-100 border-red-400'
           }`}
         >
