@@ -36,8 +36,8 @@ export default function AllActiveLoans() {
             try {
               const equipment = await getEquipmentById(loan.equipmentId);
               name = equipment.name;
-            catch (e) {
-                console.log(`Error al obtener correo equipo`);
+            } catch (e) {
+                console.log(`Error al obtener el equipo`);
             }
 
             try {
