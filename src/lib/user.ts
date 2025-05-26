@@ -23,3 +23,5 @@ export async function getCorreoById(id: string): Promise<string> {
     throw new Error(error.response?.data || 'Error al obtener el correo del usuario');
   }
 
+}
+
