@@ -38,38 +38,6 @@ function AdminPage() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Selector de tipo de equipos */}
-          <div className="bg-white border border-gray-300 rounded shadow-sm p-4">
-            <h3 className="text-lg font-semibold text-[#990000] mb-3">Filtrar Equipos</h3>
-            <div className="flex gap-3">
-              <button
-                onClick={() => setShowAvailable(true)}
-                className={`px-4 py-2 rounded font-semibold border w-full ${
-                  showAvailable
-                    ? 'bg-[#990000] text-white'
-                    : 'bg-white text-[#990000] border-[#990000]'
-                }`}
-              >
-                Disponibles
-              </button>
-              <button
-                onClick={() => setShowAvailable(false)}
-                className={`px-4 py-2 rounded font-semibold border w-full ${
-                  !showAvailable
-                    ? 'bg-[#990000] text-white'
-                    : 'bg-white text-[#990000] border-[#990000]'
-                }`}
-              >
-                Mal Estado
-              </button>
-            </div>
-          </div>
-
-          {/* Lista de equipos según filtro */}
-          <div className="bg-white border border-gray-300 rounded shadow-sm p-4">
-            {showAvailable ? <EquipmentList /> : <EquipmentBadList />}
-          </div>
 
           {/* Resto del panel */}
           <AddEquipmentForm />
@@ -78,6 +46,39 @@ function AdminPage() {
           <EquipmentById />
           <AllActiveLoans />
           <Notification />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Selector de tipo de equipos */}
+                    <div className="bg-white border border-gray-300 rounded shadow-sm p-4">
+                      <h3 className="text-lg font-semibold text-[#990000] mb-3">Filtrar Equipos</h3>
+                      <div className="flex gap-3">
+                        <button
+                          onClick={() => setShowAvailable(true)}
+                          className={`px-4 py-2 rounded font-semibold border w-full ${
+                            showAvailable
+                              ? 'bg-[#990000] text-white'
+                              : 'bg-white text-[#990000] border-[#990000]'
+                          }`}
+                        >
+                          Disponibles
+                        </button>
+                        <button
+                          onClick={() => setShowAvailable(false)}
+                          className={`px-4 py-2 rounded font-semibold border w-full ${
+                            !showAvailable
+                              ? 'bg-[#990000] text-white'
+                              : 'bg-white text-[#990000] border-[#990000]'
+                          }`}
+                        >
+                          Mal Estado
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Lista de equipos según filtro */}
+                    <div className="bg-white border border-gray-300 rounded shadow-sm p-4">
+                      {showAvailable ? <EquipmentList /> : <EquipmentBadList />}
+                    </div>
         </div>
       </div>
     </main>
